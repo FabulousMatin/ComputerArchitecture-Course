@@ -1,0 +1,16 @@
+addi x10, x0, 80 	// *a is 80
+addi x12, x0, 9 	// j = 8
+lw x11, 0(x10) 		// max will be saved in x11, default max = a[0]
+blt x12, x0, 28		// if i < 0, end the loop
+addi x12, x12, -1	// j = j - 1
+addi x10, x10, 4	// i = i + 4
+lw x13, 0(x10) 		// x13 = a[i]
+blt x13, x11, -16 	// if a[i] < max, back to loop 
+addi x11, x13, 0 	// if a[i] >= max, max = a[i] 
+jal x0, -24 		// back to loop
+addi x20, x0, 400 	// k = 400
+sw x11, 0(x20) 		// Mem[100] = max
+
+
+x10 = *a[i], x11 = max, x12 = len(a) - 2, x13 = a[i], x20 = *Mem  
+
